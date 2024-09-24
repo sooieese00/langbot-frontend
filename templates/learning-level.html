@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 난이도 설정</title>
+    <link rel="stylesheet" href="../static/styles/learning-level.css"> <!-- 스타일시트 연결 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- axios 라이브러리 로드 -->
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../static/assets/brain.png" alt="Brain Icon" class="header-icon"> <!-- Brain Icon 이미지 -->
+            <img src="../static/assets/quiz.png" alt="Quiz Icon" class="header-icon"> <!-- Quiz Icon 이미지 -->
+        </div>
+        <h1>좋아요! 이제 학습 난이도를 설정해볼까요?</h1> <!-- 제목 -->
+        <div class="levels">
+            <div class="level" data-level="걸음마" onclick="selectLevel(this)">
+                <div class="level-info">
+                    <p class="level-title"><strong>걸음마</strong></p> <!-- 걸음마 레벨 -->
+                    <p class="level-description">영어라는 언어에 처음이에요</p> <!-- 걸음마 레벨 설명 -->
+                </div>
+            </div>
+            <div class="level" data-level="초급" onclick="selectLevel(this)">
+                <div class="level-info">
+                    <p class="level-title"><strong>초급</strong></p> <!-- 초급 레벨 -->
+                    <p class="level-description">자막을 듣고 영상을 봐도 어휘가 잘 안 들려요</p> <!-- 초급 레벨 설명 -->
+                </div>
+            </div>
+            <div class="level" data-level="중급" onclick="selectLevel(this)">
+                <div class="level-info">
+                    <p class="level-title"><strong>중급</strong></p> <!-- 중급 레벨 -->
+                    <p class="level-description">자막 없어도 영상을 절반 정도는 이해할 수 있어요</p> <!-- 중급 레벨 설명 -->
+                </div>
+            </div>
+            <div class="level" data-level="고급" onclick="selectLevel(this)">
+                <div class="level-info">
+                    <p class="level-title"><strong>고급</strong></p> <!-- 고급 레벨 -->
+                    <p class="level-description">일부 어휘 제외, 자막 없어도 영상을 볼 수 있어요</p> <!-- 고급 레벨 설명 -->
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <button id="back-button" onclick="goBack()">뒤로 가기</button> <!-- 뒤로 가기 버튼 -->
+            <button id="next-button" onclick="goNext()">다음</button> <!-- 다음 버튼 -->
+        </div>
+    </div>
+    <script src="../static/learning-select.js"></script> <!-- 자바스크립트 파일 연결 -->
+</body>
+</html>

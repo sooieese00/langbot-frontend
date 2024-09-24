@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9ffef; /* 배경색을 연한 초록색으로 변경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.quiz-result {
+    text-align: center;
+    background-color: #fff;
+    padding: 30px; /* 패딩을 늘려서 전체적인 공간을 확보 */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    border: 2px solid #b5e3b5; /* 연한 초록색 테두리 */
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #5cb85c; /* 진한 초록색 진행 바 */
+    border-radius: 5px;
+    margin-bottom: 20px; /* 간격을 더 넓힘 */
+    width: 100%; /* 점수에 따라 조정 가능 */
+}
+
+.score {
+    font-size: 24px;
+    color: #5cb85c; /* 진한 초록색 글씨 */
+    margin-bottom: 15px; /* 간격을 더 넓힘 */
+}
+
+.score strong {
+    font-weight: bold;
+}
+
+.message {
+    font-size: 16px;
+    color: #4a4a4a; /* 진한 회색 글씨 */
+    font-weight: bold; /* 굵게 표시 */
+    margin-bottom: 30px; /* 간격을 더 넓힘 */
+}
+
+.quiz-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px; /* 간격을 더 넓힘 */
+    margin-bottom: 30px; /* 간격을 더 넓힘 */
+}
+
+.quiz-item {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #99cc99; /* 진한 초록색 테두리 */
+    background-color: #ccffcc; /* 연한 초록색 배경 */
+    font-size: 16px;
+    color: #006600; /* 진한 초록색 글씨 */
+}
+.correct {
+    background-color: #ccffcc;
+    border-color: #99cc99;
+    color: #006600; /* 진한 초록색 글씨 */
+}
+
+.incorrect {
+    background-color: #ffd6d6;
+    border-color: #ff9999;
+    color: #cc0000; /* 진한 빨간색 글씨 */
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between; /* 버튼 사이 간격을 넓히기 위해 변경 */
+    padding: 20px; /* 패딩을 늘려서 간격을 더 넓힘 */
+    border-top: 2px solid #b5e3b5; /* 연한 초록색 테두리 */
+    margin-top: 20px; /* 버튼들을 조금 더 아래로 이동 */
+}
+
+button {
+    padding: 15px 30px; /* 버튼의 크기를 키워서 공간을 더 넓게 사용 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold; /* 버튼 글씨 굵게 표시 */
+}
+
+.retry-button {
+    background-color: white; /* 배경을 하얀색으로 변경 */
+    color: #5cb85c; /* 진한 초록색 글씨 */
+    border: 2px solid #5cb85c; /* 진한 초록색 테두리 */
+}
+
+.retry-button:hover {
+    background-color: #f0f0f0; /* hover 시 색상 변경 */
+}
+
+.other-button {
+    background-color: #5cb85c; /* 진한 초록색 배경 */
+    color: white;
+    border: 2px solid #5cb85c; /* 진한 초록색 테두리 */
+}
+
+.other-button:hover {
+    background-color: #4cae4c; /* hover 시 색상 변경 */
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 결과</title>
+    <link id="theme-style" rel="stylesheet" href=""> <!-- 동적으로 CSS 파일을 로드 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- axios 라이브러리 로드 -->
+
+</head>
+<body>
+    
+    <div class="quiz-result">
+        <div class="progress-bar"></div>
+
+        <div class="score">
+             <strong>🥳 100점🥳 </strong> 
+        </div>
+        <div class="message">
+            GPT인 제가 한 수 배워야겠어요!
+        </div>
+        <div class="quiz-list">
+            <!-- 여기에 퀴즈 항목들이 동적으로 추가될 것입니다 -->
+        </div>
+
+            <button class="next-button">다음</button>
+
+    </div>
+    <script src="../static/quiz-result.js"></script> <!-- 자바스크립트 파일 연결 -->
+</body>
+</html>

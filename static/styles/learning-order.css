@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 600px;
+    text-align: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+    font-size: 16px; 
+    flex: 1;
+    margin: 0 10px; 
+}
+
+#back-button {
+    background-color: #ccc;
+}
+
+#next-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.option {
+    width: 150px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.option p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.option.selected {
+    border-color: #87ceeb;
+    background-color: #e0f7ff;
+}
+
+.option .order-number {
+    display: block;
+    margin-top: 5px;
+    font-size: 18px;
+    color: #87ceeb;
+}

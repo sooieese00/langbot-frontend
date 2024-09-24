@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; 
+}
+
+.container {
+    text-align: center;
+    width: 800px; /* 페이지의 전체 폭 설정 */
+    max-width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color : white;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #32CD32;
+    border-radius: 8px;
+    margin-bottom: 160px;
+    width: 100%;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header-icon {
+    width: 120px; /* 아이콘 크기 설정 */
+    height: auto;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: bold; /* 텍스트 굵게 */
+    color: #333;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 50%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 120px; /* 입력 필드와 하단 간격 조정 */
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-top: 1px solid #ccc; /* 상단에 얇은 회색 선 추가 */
+}
+
+button {
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 125px; /* 버튼 크기 고정 */
+}
+
+#back-button {
+    background-color: transparent;
+    color: #666;
+    border: 1px solid #ccc;
+}
+
+#next-button {
+    background-color: #32CD32;
+    color: white;
+    border: none;
+}
+
+#back-button:hover {
+    text-decoration: underline;
+}
+
+#next-button:hover {
+    background-color: #28a428;
+}

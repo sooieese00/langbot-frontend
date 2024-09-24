@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 어휘/구문 개수 설정</title>
+    <link rel="stylesheet" href="../static/styles/learning-quantity.css"> <!-- 스타일시트 연결 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- axios 라이브러리 로드 -->
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../static/assets/brain.png" alt="Brain Icon" class="header-icon"> <!-- Brain Icon 이미지 -->
+            <img src="../static/assets/quiz.png" alt="Quiz Icon" class="header-icon"> <!-- Quiz Icon 이미지 -->
+        </div>
+        <h1>학습 어휘 / 구문 개수는 몇 개로 설정할까요?</h1> <!-- 제목 -->
+        <div class="quantities">
+            <div class="quantity" data-quantity="5개" onclick="selectQuantity(this)">
+                <div class="quantity-info">
+                    <p class="quantity-number"><strong>5개</strong></p> <!-- 10개 옵션 -->
+                    <p class="quantity-description">학습 시간이 많이 없을 때 좋아요</p> <!-- 10개 설명 -->
+                </div>
+            </div>
+            <div class="quantity" data-quantity="10개" onclick="selectQuantity(this)">
+                <div class="quantity-info">
+                    <p class="quantity-number"><strong>10개</strong></p> <!-- 20개 옵션 -->
+                    <p class="quantity-description">다시 영상을 볼 때 내용 상의 막힘은 없을 거예요</p> <!-- 20개 설명 -->
+                </div>
+            </div>
+            <div class="quantity" data-quantity="15개" onclick="selectQuantity(this)">
+                <div class="quantity-info">
+                    <p class="quantity-number"><strong>15개</strong></p> <!-- 30개 옵션 -->
+                    <p class="quantity-description">직접 튜터가 될 수 있을 정도예요!</p> <!-- 30개 설명 -->
+                </div>
+            </div>
+            <div class="quantity" data-quantity="직접 입력" onclick="selectQuantity(this)">
+                <div class="quantity-info">
+                    <p class="quantity-number"><strong>직접 입력</strong></p> <!-- 직접 입력 옵션 -->
+                    <input type="number" id="custom-quantity" placeholder="최대 입력 개수: 20" min="3" max="20"> <!-- 사용자 정의 입력 필드 -->
+                    <p id="error-message" class="error-message"></p> <!-- 에러 메시지 -->
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <button id="back-button" onclick="goBack()">뒤로 가기</button> <!-- 뒤로 가기 버튼 -->
+            <button id="next-button" onclick="goNext()">다음</button> <!-- 다음 버튼 -->
+        </div>
+    </div>
+    <script src="../static/learning-select.js"></script> <!-- 자바스크립트 파일 연결 -->
+</body>
+</html>

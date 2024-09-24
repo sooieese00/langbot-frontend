@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Screen</title>
+    <link rel="stylesheet" href="../static/styles/quiz.css"> <!-- 스타일시트 연결 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- axios 라이브러리 로드 -->
+</head>
+<body>
+    <div class="loading-container" id="loading-screen">
+        <div class="fixed-text">
+            퀴즈를 생성하고 있어요...<br>
+            잠깐 기다리는 동안,
+        </div>
+        <div class="quote">
+            불필요한 브라우저들은 닫아볼까요? 🧭
+        </div>
+        <div class="loading-spinner"></div>
+    </div>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress-bar-fill"></div>
+        </div>
+        <div class="question-text">아래의 한글 표현을 영어로 작성해주세요</div>
+        <div class="expression-box">
+            <div class="overlay" id="loading-overlay"></div>
+            <div class="spinner" id="loading-spinner"></div>
+            <span class="expression-text" id ="expression-text" >퀴즈를 생성하고 있습니다...</span>
+        </div>
+        <form id="quiz-form">
+        <input type="text" class="input-box" id = "input-box" placeholder="이곳에 타이핑해주세요!">
+        <div class="divider"></div>
+        <div class="buttons">
+            <button class="button button-primary">정답 입력</button>
+        </div>
+    </form>
+    </div>
+    <script src="../static/quiz.js"></script>
+</body>
+</html>

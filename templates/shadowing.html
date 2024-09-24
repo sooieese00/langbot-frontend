@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쉐도잉</title>
+    <link rel="stylesheet" href="../static/styles/shadowing.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- axios 라이브러리 로드 -->
+    <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+    <div class="loading-container" id="loading-screen">
+        <div class="fixed-text">
+            공부한 표현을 가져오고 있어요...<br>
+            잠깐 기다리는 동안,
+        </div>
+        <div class="quote">
+            기지개를 쭉 켜볼까요? 💪
+        </div>
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress-bar-fill"></div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <p id="accuracyscore">녹음을 하고</p> 
+            <p id="fluencyscore">ok버튼을 누르면,</p> 
+            <p id="completenesscore">여기에 발음에 대한 </p> 
+            <p id="pronscore">평가가 나옵니다</p> <!-- 표현 목록 -->
+        </div>
+        <h5> 오디오를 들을 수 있는 환경과 녹음을 위한 마이크를 준비해주세요</h5>
+        <div class="caption">
+            <button class= "playTTS-Button" id = "playTTS-Button">
+            <img src="../static/assets/audio.png" alt="Audio Icon"/></button>
+            <div class="caption-text" id = "caption-text">첫번째 문장</div>
+        </div>
+        <div class="user">
+            <button class="record-button" id="record-button">
+            <img src="../static/assets/userspeech.png" alt="Speaking Icon" width="24" /></button>
+            <div class="user-stt" id = "user-stt">왼쪽 버튼을 눌러, 녹음을 시작하세요</div>
+            <button class = "ok-button" id="ok-button">ok </button>
+        </div>
+        <div class="footer">
+            <button id="back-button" onclick="previousCaption()">이전문장</button> <!-- 뒤로 가기 버튼 -->
+            <button id="next-button" onclick="nextCaption()">다음문장</button> <!-- 다음 버튼 -->
+        </div>
+    </div>
+    <script defer src="../static/shadowing.js"></script>
+</body>
+</html>

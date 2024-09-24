@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유튜브 URL 입력</title>
+    <link rel="stylesheet" href="../static/styles/index.css"> <!-- 스타일시트 연결 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- axios 라이브러리 로드 -->
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar"></div> <!-- 진행률 바 -->
+        <div class="header">
+            <img src="../static/assets/logo.png" class="header-icon" alt="YouTube Icon"> <!-- 유튜브 아이콘 -->
+        </div>
+        <h1>학습을 원하시는 유튜브 영상의 URL을 입력해주세요!</h1> <!-- 제목 -->
+        <input type="text" id="youtube-url" placeholder="www.youtube.com"> <!-- 유튜브 URL 입력 필드 -->
+        <div class="footer">
+            <button id="back-button" onclick="goBack()">뒤로 가기</button> <!-- 뒤로 가기 버튼 -->
+            <button id="next-button">다음</button> <!-- 다음 버튼 -->
+        </div>
+    </div>
+    <script src="../static/index.js"></script> <!-- 자바스크립트 파일 연결 -->
+</body>
+</html>

@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+
+
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    background-color: #ffffff; /* 기본 배경색 유지 */
+    border-radius: 5px;
+    border: 2px solid #e5e5e5;
+    overflow: hidden;
+}
+
+.header {
+    background-color: #ffffff; /* 기본 배경색 유지 */
+    padding: 0;
+}
+
+.progress-bar {
+    height: 10px;
+    width: 100%;
+}
+
+.content {
+    padding: 20px;
+  display : row;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.correct-section{
+  width : 500px;
+  border : 2px solid #a6a6a6;
+  border-radius : 5px;
+  margin-left :20%;
+  margin-top : 20px;
+  margin-bottom : 20px;
+  padding: 20px;
+}
+
+.main-section {
+    margin-left: 50px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.text-section {
+    margin-top: 10px;
+    margin-bottom : 20px;
+}
+
+.subheading {
+    font-size: 14px;
+    color: #008dd4;
+    margin-bottom: 10px;
+    font-weight: bold;
+    min-width:150px;
+}
+
+.quote {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.info-section {
+    flex: 1;
+    max-width: 400px;
+}
+
+.description {
+    display : flex;
+    font-size: 14px;
+    color: #333333;
+    margin-top : 10px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    margin-right : 20px;
+}
+
+#correctAnswer{
+    font-size : 18px;
+    color : black;
+    font-weight: bold;
+  }
+  #question{
+    font-size: 14px;
+    color : grey;
+  }
+
+.footer {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #e5e5e5;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+}
+
+.result {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.options {
+    display: flex;
+    gap: 15px;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.next-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff; 
+}

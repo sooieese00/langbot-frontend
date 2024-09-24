@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습</title>
+    <link rel="stylesheet" href="../static/styles/learning-content.css"> <!-- 스타일시트 연결 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- axios 라이브러리 로드 -->
+    <script src="https://www.youtube.com/iframe_api"></script> <!-- 유튜브 IFrame API 로드 -->
+</head>
+<body>
+    <div class="loading-container" id="loading-screen">
+        <div class="fixed-text">
+            공부할 표현을 가져오고 있어요...<br>
+            잠깐 기다리는 동안,
+        </div>
+        <div class="quote">
+            책상을 깔끔하게 정리해볼까요? 🖥️
+        </div>
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="container" style = "display:none;">
+        
+        <div class="sidebar" id="sidebar">
+            <ul id="expression-list"></ul> <!-- 표현 목록 -->
+        </div>
+        <div class="main-content">
+            <h1 id="expression-title">표현 제목</h1>
+            <p class = "grey" id="expression-meaning">표현 뜻</p>
+            <div class="learning-content">
+                <div class="video">
+                    <div id="videoPlayer"></div> 
+                    <p id="original-sentence-title"><bold>원본 문장</bold></p> <!-- 원본 문장 제목 -->
+                    <p class = "bold" id="original-sentence">원본문장내용</p>
+                    <p class = "grey" id="meaning">뜻 내용</p>
+                </div>
+                <div class="text-content">
+                    <div class = "point">
+                        <p id="important-point-title"><bold>주요포인트</bold></p> <!-- 중요한 포인트 제목 -->
+                        <p class="bold" id="important-point">중요한 포인트 내용</p>
+                      </div>
+                    <p id="new-example-title"><bold>새로운 예문</bold></p> <!-- 새로운 예문 제목 -->
+                    <p class = "bold" id="new-example">새로운 예문 내용</p> 
+                    <p class= "grey" id="new-example-translation">새로운 예문 해석 내용</p> 
+                </div>
+            </div>
+            <div class="footer">
+                <button id="next-button"  style="display: none;"></button> 
+                <button id="content-back" onclick=" goBackExpression()">뒤로 가기</button> <!-- 뒤로 가기 버튼 -->
+                <button id="content-next" onclick="goNextExpression()">다음</button> <!-- 다음 버튼 -->
+            </div>
+        </div>
+    </div>
+    <script src="../static/learning-content.js"></script> <!-- 자바스크립트 파일 연결 -->
+</body>
+</html>

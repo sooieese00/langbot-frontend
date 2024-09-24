@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Feedback</title>
+    <link rel="stylesheet" href="../static/styles/feedback.css"> <!-- 스타일시트 연결 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- axios 라이브러리 로드 -->
+
+</head>
+<body>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="content">
+                <h1 id ="iscorrect">정답이에요</h1>
+                <div class = "correct-section">
+                    <div id="correctAnswer">정답 : easy fit</div>
+                    <div id ="question"><br>한국말문제 : 어울리는 것이 쉬웠어</div>
+                </div>
+
+                <div class="main-section">
+                    <p class="description">
+                    <span class="subheading">입력한 답</span><br>
+                    <span id="userAnswer">여기에 사용자가 입력한 답이 표시됩니다.</span>
+                    </p>
+                    <p class="description">
+                    <span class="subheading">피드백</span><br>
+                    <span id="description-feedback">문제에서 "어울리는 것이 쉬웠어"라는 의미는 "easy blend"가 아니라 "easy fit"입니다. "fit in" 이란 표현이 더 자연스럽고 일상적으로 사용되는 표현입니다. 다음에는 더 많은 유사표현을 활용해보세요.</span>
+                    </p>
+                    <p class="description">
+                    <span class="subheading">유사한 표현 제안</span><br>
+                    <span id="example-feedback">'yes it was easy to fit in all you had to do was look good and have a lot of attitude'</span>
+                    </p>
+                </div>
+          
+                <div class="footer">
+                    <div class="footer-content">
+                        <div class="result">
+                            <img class="icon" src="../static/assets/check.png" alt="Check" class="icon">
+                            <span id="final-result">결과 메시지가 표시됩니다.</span>
+                        </div>
+                        <div class="options">
+                            <span>오류 보고</span>
+                            <span>토론하기</span>
+                        </div>
+                    </div>
+                    <button id="next-quiz" class="next-button">다음</button>
+                </div>
+            </div>
+        </div>
+        <script src="../static/quiz.js"></script>
+    </body>
+</html>

@@ -1,0 +1,169 @@
+/* 전체 화면을 Flexbox로 중앙 정렬하고 배경색을 설정 */
+body {
+    font-family: Arial, sans-serif; /* 기본 글꼴 설정 */
+    display: flex; /* Flexbox 사용 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    height: 100vh; /* 화면 전체 높이 사용 */
+    margin: 0; /* 기본 마진 제거 */
+    background-color: #e6ffd3;
+}
+/* 중앙 컨테이너 스타일 */
+.container {
+    width: 600px; /* 너비 설정 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    background-color: white; /* 배경색 설정 */
+    padding: 40px; /* 안쪽 여백 설정 */
+    border-radius: 8px; /* 모서리 둥글게 설정 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 설정 */
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    height: 10px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.progress-bar-fill {
+    width: 100%; 
+    height: 100%;
+    background-color: #58cc02;
+    border-radius: 5px;
+}
+
+.sidebar {
+    width: 12vw; /* 사이드바 폭 */
+    background-color: #FAFAFA; /* 배경 색상 */
+    position: fixed;/* 화면에 고정 */
+    top: 50%; /* 상단을 화면의 중앙으로 설정 */
+    bottom: auto; /* 하단 설정 제거 */
+    right: 0vw; /* 화면의 오른쪽에 고정 */
+    height: 15vw; /* 사이드바의 높이 */
+    transform: translateY(-50%); /* 상단 위치를 기준으로 위로 50% 이동 */
+    padding: 20px;
+    flex-grow : 0;
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 추가 */
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 추가 */
+    z-index: -1; /* 다른 요소들보다 앞에 위치 */
+    text-align: left; /* 텍스트 중앙 정렬 변경 */
+    font-weight: bold;
+}
+p{
+    font-weight:lighter;
+    font-size : 12px;
+}
+#pronscore{
+    font-weight: bold;
+}
+.caption {
+    width: 60%; /* 너비 설정 */
+    padding: 15px; /* 안쪽 여백 설정 */
+    border-radius: 10px; /* 모서리 둥글게 설정 */
+    display: flex; /* Flexbox 사용 */
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: flex-start; /* 공간을 균등하게 나눔 */
+    transition: all 0.3s ease; 
+    margin-left: 0;
+    margin-bottom : 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #FAFAFA;
+}
+.user {
+    width: 60%; /* 너비 설정 */
+    padding: 15px; /* 안쪽 여백 설정 */
+    margin-bottom : 30px;
+    border-radius: 10px; /* 모서리 둥글게 설정 */
+    display: flex; /* Flexbox 사용 */
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: flex-start; /* 공간을 균등하게 나눔 */
+    transition: all 0.3s ease; 
+    margin-left: 30%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #FAFAFA;
+}
+.icon {
+    margin-right: 10px;
+}
+.item .text {
+    flex-grow: 1;
+}
+.item .subtext {
+    color: #aaa;
+}
+.button-container {
+    margin-top: 50px;
+}
+.divider {
+    width: 1200px;
+    height: 1px;
+    background-color: #e5e5e5;
+    margin: 0 -100px 40px -100px;
+    
+}
+button{
+    border:none;
+}
+
+#next-button {
+    padding: 10px 30px; 
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #42c62f;
+    color: white;
+}
+
+#back-button  {
+    padding: 10px 30px; 
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #ccc;
+    color: white;
+}
+.fixed-text {
+    font-size: 20px; /* 명언보다 조금 더 큰 폰트 크기 */
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0; /* 박스 크기 줄이기 위해 패딩 감소 */
+    margin-bottom: 10px; /* 명언과의 간격 */
+    color: #333333
+}
+
+.loading-container {
+    text-align: center;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6ffd3;
+    font-family: Arial, sans-serif;
+    flex-direction: column; /* 세로 방향으로 정렬 */
+}
+
+.quote {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 75px;
+    color: #333333
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #5cb85c;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

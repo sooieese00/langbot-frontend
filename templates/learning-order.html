@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 순서 선택</title>
+    <link rel="stylesheet" href="../static/styles/learning-order.css"> <!-- 스타일시트 연결 -->
+</head>
+<body>
+    <div class="container">
+        <h1>학습은 이 순서대로 진행됩니다</h1> <!-- 제목 -->
+        <p>중간에 이전으로 돌아가거나 나갈 수 있어요</p> <!-- 안내 문구 -->
+        <div class="options">
+            <div class="option" data-option="학습하기" onclick="selectOption(this)">
+                <img src="../static/assets/brain.png" alt="학습하기"> <!-- 학습하기 이미지 -->
+                <p>학습하기</p> <!-- 학습하기 텍스트 -->
+                <span class="order-number"></span> <!-- 순서 번호 표시 -->
+            </div>
+            <div class="option" data-option="퀴즈 풀기" onclick="selectOption(this)">
+                <img src="../static/assets/quiz.png" alt="퀴즈 풀기"> <!-- 퀴즈 풀기 이미지 -->
+                <p>퀴즈 풀기</p> <!-- 퀴즈 풀기 텍스트 -->
+                <span class="order-number"></span> <!-- 순서 번호 표시 -->
+            </div>
+            <div class="option" data-option="쉐도잉 하기" onclick="selectOption(this)">
+                <img src="../static/assets/shadowing.png" alt="쉐도잉 하기"> <!-- 쉐도잉 하기 이미지 -->
+                <p>쉐도잉 하기</p> <!-- 쉐도잉 하기 텍스트 -->
+                <span class="order-number"></span> <!-- 순서 번호 표시 -->
+            </div>
+            
+        </div>
+        <div class="footer">
+            <button id="back-button" onclick="goBack()">뒤로 가기</button> <!-- 뒤로 가기 버튼 -->
+            <button id="next-button" onclick="goNext()">다음</button> <!-- 다음 버튼 -->
+        </div>
+    </div>
+    <script src="../static/learning-order.js"></script> <!-- 자바스크립트 파일 연결 -->
+</body>
+</html>
