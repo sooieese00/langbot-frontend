@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const quizResult = localStorage.getItem(`quiz_${currentQuizIndex}_result`) || '';
         const descriptionFeedback = localStorage.getItem(`quiz_${currentQuizIndex}_description`) || '';
         const exampleFeedback = localStorage.getItem(`quiz_${currentQuizIndex}_example`) || '';
-        const question = localStorage.getItem(`question`) || '';
+        const question = localStorage.getItem('question').replace(/"/g, '') || '';
         const correctAnswer = localStorage.getItem(`quiz_${currentQuizIndex}_correctAnswer`) || ''; // 정답을 로컬 스토리지에서 가져옴
         const sentence = localStorage.getItem(`quiz_${currentQuizIndex}_sentence`) || '';
         // 퀴즈 결과에 따라 색상을 변경하는 함수
@@ -106,6 +106,7 @@ let currentExpressionIndex = 0;
 async function loadQuiz(currentIndex) {
     console.log("로컬말고 새로 요청해서 퀴즈 받아옴")
     localStorage.removeItem('currentExpressionIndex');
+    localStorage.removeItem('currentQuizIndex');
     const expressions = JSON.parse(localStorage.getItem('expressions'));
     const expressionNumber = localStorage.getItem('selectedQuantity');
 
@@ -189,12 +190,11 @@ function handleQuizSubmit(userAnswer){
     .then(data => {
         // 서버로부터 피드백 받으면 처리
         console.log('서버 응답:', data);
-        const formattedExample = data.example.split('/').join('\n');
         const formatteddescription = data.description.split('.').join('.\n');
         localStorage.setItem('currentQuizIndex', currentExpressionIndex); // 현재 퀴즈 인덱스를 저장
         localStorage.setItem(`quiz_${currentExpressionIndex}_result`, data.result); // 정답 여부를 저장
         localStorage.setItem(`quiz_${currentExpressionIndex}_description`, formatteddescription); // 피드백을 저장
-        localStorage.setItem(`quiz_${currentExpressionIndex}_example`, formattedExample);
+        localStorage.setItem(`quiz_${currentExpressionIndex}_example`, data.example);
         localStorage.setItem(`quiz_${currentExpressionIndex}_correctAnswer`, data.correctAnswer); // 피드백을 저장
         localStorage.setItem(`quiz_${currentExpressionIndex}_userAnswer`, userAnswer); // 사용자의 답안을 저장
         localStorage.setItem(`quiz_${currentExpressionIndex}_sentence`, data.sentence);
@@ -206,12 +206,6 @@ function handleQuizSubmit(userAnswer){
     });
 };
 
-
-
-// 학습 페이지로 이동하는 함수
-function goToLearningPage() {
-    window.location.href = '/learning-content'; // 학습 페이지로 이동
-}
 
 
 document.getElementById('next-quiz').addEventListener('click', function() {

@@ -20,14 +20,15 @@
         <div class="loading-spinner"></div>
     </div>
 
-    <div class="container" style = "display:none;">
-        
+    <div class="container" style="display: none;">
         <div class="sidebar" id="sidebar">
             <ul id="expression-list"></ul> <!-- 표현 목록 -->
         </div>
         <div class="main-content">
-            <h1 id="expression-title">표현 제목</h1>
-            <p class = "grey" id="expression-meaning">표현 뜻</p>
+            <div class = "title-content">
+                <h1 id="expression-title">표현 제목</h1>
+                <p class = "grey" id="expression-meaning">표현 뜻</p>
+            </div>
             <div class="learning-content">
                 <div class="video">
                     <div id="videoPlayer"></div> 
@@ -39,14 +40,13 @@
                     <div class = "point">
                         <p id="important-point-title"><bold>주요포인트</bold></p> <!-- 중요한 포인트 제목 -->
                         <p class="bold" id="important-point">중요한 포인트 내용</p>
-                      </div>
+                    </div>
                     <p id="new-example-title"><bold>새로운 예문</bold></p> <!-- 새로운 예문 제목 -->
                     <p class = "bold" id="new-example">새로운 예문 내용</p> 
                     <p class= "grey" id="new-example-translation">새로운 예문 해석 내용</p> 
                 </div>
             </div>
             <div class="footer">
-                <button id="next-button"  style="display: none;"></button> 
                 <button id="content-back" onclick=" goBackExpression()">뒤로 가기</button> <!-- 뒤로 가기 버튼 -->
                 <button id="content-next" onclick="goNextExpression()">다음</button> <!-- 다음 버튼 -->
             </div>

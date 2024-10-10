@@ -131,17 +131,23 @@ function playVideoAtTimeRange(startTime, endTime) {
   
 function findExpressionTimeRange(captionsWithTime, originalSentence) {
     const words = originalSentence.split(' ');
-   console.log(originalSentence);
-    const wordObjects = {}; 
-  
+    console.log(originalSentence);
+    const wordObjects = {};
+
+    // 앞 2~4번째 단어와 뒤 2~4번째 단어만 선택
+    const selectedWords = [
+        ...words.slice(1, Math.min(4, words.length)),  // 앞에서 2~4번째 단어
+        ...words.slice(-4, -1) // 뒤에서 2~4번째 단어
+    ];
+
     // 모든 단어를 처리하여 시간 목록을 구성
-    words.forEach((word, index) => {
+    selectedWords.forEach((word, index) => {
         const lowerCaseWord = word.toLowerCase();
         wordObjects[`word${index}`] = {
             text: lowerCaseWord,
             startTimes: []
         };
-  
+
         // 캡션에서 단어를 찾아 시간 목록에 추가
         for (let j = 0; j < captionsWithTime.length; j++) {
             if (captionsWithTime[j].text.includes(lowerCaseWord)) {
@@ -149,85 +155,45 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
             }
         }
     });
-  
+    console.log("선택된 단어들 출력", wordObjects);
+
     // 단어 쌍을 비교하여 조건에 맞지 않는 시간들을 제거
-    for (let i = 0; i < words.length - 1; i++) {
+    for (let i = 0; i < selectedWords.length - 1; i++) {
         let currentWordTimes = wordObjects[`word${i}`].startTimes;
         let nextWordTimes = wordObjects[`word${i + 1}`].startTimes;
-        // currentWordTimes에서 nextWordTimes의 가장 큰 값보다 큰 시간 제거
-        if(currentWordTimes.length>0 && nextWordTimes.length>0){
+        if (currentWordTimes.length > 0 && nextWordTimes.length > 0) {
             const maxNextTime = Math.max(...nextWordTimes);
-          currentWordTimes = currentWordTimes.filter(time => time <= maxNextTime);
-  
-          // nextWordTimes에서 currentWordTimes의 가장 작은 값보다 작은 시간 제거
-          const minCurrentTime = Math.min(...currentWordTimes);
-          nextWordTimes = nextWordTimes.filter(time => time >= minCurrentTime);
-  
-          // 필터링된 결과로 wordObjects 갱신
-          wordObjects[`word${i}`].startTimes = currentWordTimes;
-          wordObjects[`word${i + 1}`].startTimes = nextWordTimes;
-      }
+            currentWordTimes = currentWordTimes.filter(time => time <= maxNextTime);
+
+            const minCurrentTime = Math.min(...currentWordTimes);
+            nextWordTimes = nextWordTimes.filter(time => time >= minCurrentTime);
+
+            wordObjects[`word${i}`].startTimes = currentWordTimes;
+            wordObjects[`word${i + 1}`].startTimes = nextWordTimes;
+        }
     }
-  
+
     let timeArray = [];
-    for (let i = 0; i < words.length; i++) {
+    for (let i = 0; i < selectedWords.length; i++) {
         timeArray.push(...wordObjects[`word${i}`].startTimes);
     }
-  
+
     if (timeArray.length > 0) {
-        timeArray = Array.from(new Set(timeArray)).sort((a, b) => a - b);
-        const filteredArr = filterCloseNumbers(timeArray);
-  
-        // 시작 시간과 종료 시간을 계산
-        const startTime = Math.min(...filteredArr);
-        const maxStartTime = Math.max(...filteredArr);
+        const startTime = Math.min(...timeArray);
+        const maxStartTime = Math.max(...timeArray);
         const maxStartTimeCaption = captionsWithTime.find(caption => caption.startTime === maxStartTime);
-        
         const endTime = maxStartTimeCaption ? maxStartTimeCaption.startTime + maxStartTimeCaption.duration : maxStartTime;
         console.log(startTime, endTime);
         return { startTime, endTime };
     }
-  
     return null;
-  }
+}
   
-  function filterCloseNumbers(arr) {
-    if (arr.length === 0) return [];
-    
-    const result = [];
-    let tempArr = [arr[0]]; // 첫 번째 요소를 임시 배열에 추가
-  
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] - arr[i - 1] <= 7) {
-  
-            tempArr.push(arr[i]);
-        } else {
-  
-            result.push(tempArr);
-            tempArr = [arr[i]]; // 새로운 구간 시작
-        }
-    }
-  
-    // 마지막 구간도 결과 배열에 추가
-    if (tempArr.length > 0) {
-        result.push(tempArr);
-    }
-  
-    let longestArray = result[0];
-    for (let i = 1; i < result.length; i++) {
-        if (result[i].length > longestArray.length ) {
-            longestArray = result[i];
-        }
-    }
-    return longestArray;
-  }
-  
-
 function goNext() {
     const path = window.location.pathname;
     if (path.includes('learning-content')) {
         if (currentExpressionIndex >= expressions.length - 1) {
-            window.location.href = '/quiz';
+            window.location.href = '/end-learning';
         } else {
             currentExpressionIndex++;
             displayExpression(expressions[currentExpressionIndex]);
@@ -240,7 +206,7 @@ function goNextExpression() {
         currentExpressionIndex += 1;
         displayExpression(expressions[currentExpressionIndex]);
     } else {
-        window.location.href = '/quiz';
+        window.location.href = '/end-learning';
     }
 }
 

@@ -16,6 +16,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     background-color: white;
+    margin-bottom : 0px;
 }
 
 .learning-content {
@@ -24,34 +25,37 @@ body {
     margin-top: 20px;
     text-align: start;
 }
-#expression-title{
-    margin-bottom : 0;
-}
-#expression-meaning{
-    margin-top : 0;
-}
 
 .main-content {
-    margin: 50px;
+    margin: 50px 50px 30px 50px;
 }
 
 .video {
+    margin-left : 30px;
     flex: 1;
     margin-right: 20px;
 }
 
 #videoPlayer {
-    width: 320px;
+    width: 300px;
     height: 180px;
+    margin-bottom : 25px;
+}
+
+.title-content{
+    margin-bottom : 60px;
 }
 
 .text-content {
-    margin-left : 25px;
+    margin-top : 25px;
+    margin-left : 30px;
     flex: 2;
+    padding-left : 10px;
 }
 
 .point{
-    margin-bottom : 80px;
+    margin-top : 0px;
+    margin-bottom :80px;
 }
 
 .text-content p {
@@ -65,8 +69,9 @@ body {
 .footer {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 40px;
     border-top: 2px solid #e5e5e5;
+    margin-bottom : 0px;
 }
 
 button {
@@ -76,16 +81,21 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    margin: 15px;
+    margin: 30px 20px 0px 20px;
 }
 
 #content-back{
-  background-color  : rgba(255, 255, 255, 0.789) ; 
-  color : grey;
+    background-color: white; /* 흰색 배경 */
+    color: #8d8d8d;
+    border: 1px solid #cccccc; 
+    font-weight : bold;
+    margin: 30px 20px 0px 20px;
 }
 #content-next{
-  background-color :#42c62f ; 
-  color : white ; 
+    background-color :#42c62f ; 
+    color : white ; 
+    font-weight: bold;
+    margin: 30px 20px 0px 20px;
 }
   
 .sidebar {
@@ -169,7 +179,3 @@ p[id$="-title"] {
     margin: 0px;
     font-weight: bold;
 }
-p{
-    margin-top : 0px;
-}
-

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 완료</title>
+    <link rel="stylesheet" href="../static/styles/end-learning.css"> <!-- 스타일시트 연결 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- axios 라이브러리 로드 -->
+
+</head>
+<body>
+   
+    <div class="container">
+        <div class="progress-bar"></div>
+        <h1>📚 학습을 완료하셨군요!</h1>
+        <p>이제 퀴즈를 풀어볼까요?</p>
+        <div class="button-container">
+            <button class="green-button" onclick="gotoQuiz()">퀴즈로 넘어가기</button>
+            <button class="red-button" onclick="gotoLearning()">다시 학습하기</button>
+            <button class="white-button" onclick="gotoIndex()">다른 영상으로 학습하기</button>
+        </div>
+    </div>
+    <script src="../static/end.js"></script>
+</body>
+</html>

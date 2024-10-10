@@ -1,7 +1,7 @@
 
-
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.container').style.display = "none";
+    localStorage.removeItem('currentCaptionIndex');
 });
 
 window.onload = loadFixedCaption;
@@ -24,15 +24,15 @@ async function loadFixedCaption() {
         
         localStorage.setItem('captions', JSON.stringify(fixedCaption));
 
-        captionList = fixedCaption.split(".");
+        captionList = fixedCaption.split(/[.?!"]/).filter(caption => caption);
 
         document.getElementById('caption-text').textContent = captionList[0]+".";
-        captionList.splice(0,1); 
-
+        localStorage.setItem('currentCaptionIndex', 0);
         // 첫 번째 문장이 준비되면 TTS 호출
         document.getElementById('playTTS-Button').addEventListener('click', async () =>{
             try{
                 const text = document.getElementById('caption-text').textContent;
+            
                 await playTTS(text);
             } catch (error) {
                 console.error("shadowing.js TTS호출 오류:", error);
@@ -151,10 +151,10 @@ document.getElementById('ok-button').addEventListener('click', async () => {
 
         const result = await response.json();
         console.log("Evaluation result:", result);
-        document.getElementById('accuracyscore').innerText = `-정확도: ${result.AccuracyScore} /25점`;
-        document.getElementById('fluencyscore').innerText = `-유창성: ${result.FluencyScore} /25점`;
-        document.getElementById('completenesscore').innerText = `-텍스트와의 유사도: ${result.CompletenessScore} /25점`;
-        document.getElementById('pronscore').innerText = `-종합 점수: ${result.PronScore} /25점`;
+        document.getElementById('accuracyscore').innerText = `-정확도: ${result.AccuracyScore/4} /25점`;
+        document.getElementById('fluencyscore').innerText = `-유창성: ${result.FluencyScore/4} /25점`;
+        document.getElementById('completenesscore').innerText = `-텍스트와의 유사도: ${result.CompletenessScore/4} /25점`;
+        document.getElementById('pronscore').innerText = `-종합 점수: ${result.PronScore} /100점`;
 
     };
     } catch (error) {
@@ -162,35 +162,39 @@ document.getElementById('ok-button').addEventListener('click', async () => {
     }
 });
 
-
-let previousCaptions = []; 
 function nextCaption() {
     console.log("nextCaption함수 시작");
-    
-    previousCaptions.push(
-        document.getElementById("caption-text").innerText
-    );
-    
+    // 인덱스++
+    let currentCaptionIndex = localStorage.getItem('currentCaptionIndex');
+    currentCaptionIndex = parseInt(currentCaptionIndex, 10);
+    currentCaptionIndex += 1;
+    localStorage.setItem('currentCaptionIndex', currentCaptionIndex)
+
     // 다음 문장 텍스트 설정 및 TTS 호출
-    if (captionList.length >= 1) {
-        const nextCaptions = captionList[0]+".";
+    if (captionList.length >= currentCaptionIndex+1) {
+        const nextCaptions = captionList[currentCaptionIndex]+".";
         document.getElementById("caption-text").innerText = nextCaptions;
         document.getElementById("user-stt").innerText = "왼쪽 버튼을 눌러, 녹음을 시작하세요"
-        captionList.splice(0, 2);
-    }else if (captionList.length<1){
-        document.getElementById("caption-text").innerText = "영상 전체에 대한 섀도잉이 끝났습니다!";
-        document.getElementById("user-stt").innerText = "잘했어요~"
+    }else{
+        alert("마지막 문장입니다. 종료 화면으로 이동합니다.");
+        localStorage.setItem('currentCaptionIndex', captionList.length-1)
+        window.location.href = '/end-shadowing';
     }
 }
 
 function previousCaption() {
     console.log("previousCaption함수 시작");
+        // 인덱스--
+        let currentCaptionIndex = localStorage.getItem('currentCaptionIndex');
+        currentCaptionIndex = parseInt(currentCaptionIndex, 10);
+        currentCaptionIndex -= 1;
+        localStorage.setItem('currentCaptionIndex', currentCaptionIndex);
 
-    if (previousCaptions.length > 0) {
-        const lastCaption = previousCaptions.pop(); // 마지막으로 저장한 문장을 꺼냄
-        document.getElementById("caption-text").innerText = lastCaption;
-        document.getElementById("user-stt").innerText = "왼쪽 버튼을 눌러, 녹음을 시작하세요";
-    } else {
-        console.log("이전 문장이 없습니다.");
-    }
-}
+        if (currentCaptionIndex<0) {
+            localStorage.setItem('currentCaptionIndex', 0)
+            alert("현재 문장이 첫 문장입니다.");
+        }else {
+            const previousCaptions = captionList[currentCaptionIndex]+".";
+            document.getElementById("caption-text").innerText = previousCaptions;
+            document.getElementById("user-stt").innerText = "왼쪽 버튼을 눌러, 녹음을 시작하세요"
+}}

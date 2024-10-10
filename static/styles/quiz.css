@@ -12,7 +12,7 @@ body {
 .container {
     text-align: center;
     background-color: white;
-    padding: 100px;
+    padding: 50px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 85%;
@@ -62,7 +62,7 @@ body {
 .input-box {
     width: 68%;
     padding: 13px;
-    margin-bottom: 100px; /* 간격 조정 */
+    margin-bottom: 60px; /* 간격 조정 */
     border: 1px solid #ccc;
     border-radius: 12px;
     font-size: 16px;

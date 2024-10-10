@@ -5,33 +5,27 @@ import requests
 # Flask 애플리케이션 초기화
 app = Flask(__name__)
 
-# 기본 페이지 라우트
+
 @app.route('/')
 def index():
-    return render_template('index.html')  # index.html 템플릿 렌더링
+    return render_template('index.html')  
 
-# 학습 순서 선택 페이지 라우트
 @app.route('/learning-order')
 def learning_order():
-    return render_template('learning-order.html')  # learning-order.html 템플릿 렌더링
+    return render_template('learning-order.html') 
 
-# 학습 난이도 설정 페이지 라우트
 @app.route('/learning-level')
 def learning_level():
-    return render_template('learning-level.html')  # learning-level.html 템플릿 렌더링
+    return render_template('learning-level.html')  
 
-# 학습 어휘/구문 개수 설정 페이지 라우트
 @app.route('/learning-quantity')
 def learning_quantity():
-    return render_template('learning-quantity.html')  # learning-quantity.html 템플릿 렌더링
+    return render_template('learning-quantity.html') 
 
-# 학습 내용 페이지 라우트
 @app.route('/learning-content')
 def learning_content():
-    return render_template('learning-content.html')  # learning-content.html 템플릿 렌더링
+    return render_template('learning-content.html')  
 
-
-# 퀴즈 및 피드백
 @app.route('/quiz')
 def quiz():
     return render_template('quiz.html')
@@ -47,6 +41,19 @@ def quiz_result():
 @app.route('/shadowing')
 def shadowing():
     return render_template('shadowing.html')
+
+@app.route('/end-quiz')
+def end_quiz():
+    return render_template('end-quiz.html')
+
+@app.route('/end-shadowing')
+def end_shadowing():
+    return render_template('end-shadowing.html')
+
+@app.route('/end-learning')
+def end_learning():
+    return render_template('end-learning.html')
+
 
 # 백엔드 API와 연동하는 예제 엔드포인트
 @app.route('/api/forward', methods=['POST'])

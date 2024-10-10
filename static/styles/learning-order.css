@@ -56,6 +56,7 @@ button {
 .option {
     width: 150px;
     padding: 20px;
+    border: 2px solid #ccc;
     border-radius: 10px;
     text-align: center;
     display: flex;

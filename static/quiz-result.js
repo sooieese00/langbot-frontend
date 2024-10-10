@@ -48,27 +48,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         quizListContainer.appendChild(quizItem);
     });
-    /*
-    document.querySelector('.retry-button').addEventListener('click', function() {
-        localStorage.removeItem('questions');
-        localStorage.removeItem('answers');
-        localStorage.removeItem('currentExpressionIndex');
-        window.location.href = '/learning-content'; // '다시 학습하고 퀴즈 풀기' 버튼을 클릭 시 /learning-content로 이동
-    });
-
-    document.querySelector('.other-button').addEventListener('click', function() {
-        localStorage.clear();
-        window.location.href = '/'; // '다른 영상으로 학습하기' 버튼을 클릭 시 /index로 이동
-    });
-
-    document.querySelector('.shadowing-button').addEventListener('click', function() {
-        window.location.href = '/shadowing'; // '다른 영상으로 학습하기' 버튼을 클릭 시 /index로 이동
-    });
-    */
-
-
-    //퀴즈 종료 화면 추가, 거기로 가도록 수정
+    
+    //퀴즈 종료 화면으로 이동
     document.querySelector('.next-button').addEventListener('click', function() {
-        window.location.href = '/shadowing'; // '다른 영상으로 학습하기' 버튼을 클릭 시 /index로 이동
+        window.location.href = '/end-quiz'; // '다른 영상으로 학습하기' 버튼을 클릭 시 /index로 이동
     });
 });

@@ -1,0 +1,107 @@
+/* 전체 화면 크기에 맞춘 비율 설정 */
+body {
+    font-family: 'Arial', sans-serif; /* 글꼴을 Arial로 설정 */
+    margin: 0; /* 기본 여백을 제거 */
+    padding: 0; /* 기본 패딩을 제거 */
+    display: flex; /* flexbox를 사용해 자식 요소 배치 */
+    align-items: center; /* 세로 가운데 정렬 */
+    justify-content: center; /* 가로 가운데 정렬 */
+    height: 100vh; /* 화면 전체 높이를 100vh로 설정 */
+    background-color: #f0f0f0; 
+}
+
+/* 전체 컨테이너의 배치 비율 고정 */
+.container {
+    display: flex; /* 자식 요소를 flexbox로 배치 */
+    flex-direction: column; /* 자식 요소를 세로 방향으로 배치 */
+    align-items: center; /* 자식 요소들을 가운데 정렬 */
+    justify-content: flex-start; /* 자식 요소를 위쪽에서 시작 */
+    width: 800px; 
+    max-width: 100%;
+    overflow: hidden; /* 컨테이너 밖의 요소를 숨김 */
+    position: relative; 
+    background-color : white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    width: 80%; /* 가로 길이를 화면의 80%로 설정 */
+    height: 10px; /* progress bar의 높이를 10px로 설정 */
+    background-color: #42C62F; /* 녹색 배경색 설정 */
+    position: absolute; /* 절대 위치 지정 */
+    top: 20px; /* 상단에서 20px 아래로 위치 */
+    left: 10%; /* 좌측에서 10% 떨어져 가운데 정렬 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 약간의 그림자 효과 추가 */
+    border-radius: 20px; /* 모서리를 둥글게 처리 */
+}
+
+.content {
+    display: flex; /* 자식 요소를 flexbox로 배치 */
+    flex-direction: column; /* 자식 요소를 세로 방향으로 배치 */
+    align-items: center; /* 자식 요소들을 가운데 정렬 */
+    justify-content: center; /* 세로 방향으로 중앙 정렬 */
+    height: calc(100% - 60px); /* progress bar의 높이를 제외한 공간을 차지 */
+    padding: 0 20px; /* 좌우에 20px의 패딩 추가 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 크기 계산 */
+}
+
+h1 {
+    color: #4B4B4B; /* 어두운 회색 텍스트 색상 */
+    font-size: 4vh; /* 화면 높이에 비례한 글씨 크기 설정 */
+    margin: 70px 0 0 0; /* 아래쪽에 10px 여백 설정 */
+}
+
+p {
+    color: #4B4B4B;
+    font-size: 3vh; /* 화면 높이에 비례한 글씨 크기 설정 */
+    margin-bottom: 6vh; /* 아래쪽에 6vh만큼 여백 설정 */
+    font-weight: bold;
+}
+
+/* 버튼 컨테이너 설정 */
+.button-container {
+    display: flex; /* 자식 버튼들을 flexbox로 배치 */
+    flex-direction: column; /* 버튼들을 세로로 정렬 */
+    align-items: center; /* 버튼들을 가운데 정렬 */
+    width: 100%; 
+    margin-bottom : 10px;
+}
+
+button {
+    width: 290%; /* 버튼의 가로 길이를 80%로 설정 */
+    max-width: 440px; /* 버튼의 최대 가로 크기를 870px로 제한 */
+    padding: 1.5vh 0; /* 세로 패딩을 화면 높이에 비례하게 설정 */
+    margin: 2vh 0; /* 버튼 간의 간격을 화면 높이에 비례해 설정 */
+    border: none; 
+    cursor: pointer;
+    font-size: 2.5vh; /* 화면 높이에 비례한 버튼 텍스트 크기 */
+    border-radius: 15px; /* 버튼의 모서리를 둥글게 처리 */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* 버튼에 약간의 그림자 효과 추가 */
+    transition: all 0.3s; /* 모든 변화에 0.3초의 전환 효과 적용 */
+}
+
+.green-button {
+    background-color: #42C62F; /* 녹색 배경색 */
+    color: white; /* 흰색 글씨 */
+}
+
+.red-button {
+    background-color: #FF4347; /* 빨간색 배경색 */
+    color: white; /* 흰색 글씨 */
+}
+
+.white-button {
+    background-color: white; /* 흰색 배경 */
+    color: #8d8d8d; /* 어두운 회색 글씨 */
+    border: 1px solid #cccccc; /* 회색 테두리 추가 */
+}
+
+button:hover {
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+}
+
+button:focus {
+    outline: none; 
+}
