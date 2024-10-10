@@ -1,4 +1,4 @@
-
+const backendUrl = process.env.BACKEND_URL;
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.container').style.display = "none";
     localStorage.removeItem('currentCaptionIndex');
@@ -47,7 +47,7 @@ async function loadFixedCaption() {
 async function playTTS(text) {
     console.log(text);
     try {
-        const ttsResponse = await axios.post('http://localhost:5000/api/azure/tts', { text }, {
+        const ttsResponse = await axios.post(`${backendUrl}/api/azure/tts`, { text }, {
             responseType: 'arraybuffer'
         });
 

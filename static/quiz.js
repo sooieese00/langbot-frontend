@@ -1,3 +1,4 @@
+const backendUrl = process.env.BACKEND_URL;
 document.addEventListener('DOMContentLoaded', (event) => {
     const currentUrl = window.location.pathname;
     if (currentUrl === '/quiz') {
@@ -112,7 +113,7 @@ async function loadQuiz(currentIndex) {
 
 
     try {
-        const response = await axios.post('http://localhost:5000/api/openai/expressionQuiz', {
+        const response = await axios.post(`${backendUrl}/api/openai/expressionQuiz`, {
             expressions,
             quizNumber: expressionNumber
         });

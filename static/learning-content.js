@@ -2,7 +2,7 @@ let expressions = [];
 let currentExpressionIndex = 0;
 let player;
 const videoId = localStorage.getItem('videoId'); 
-
+const backendUrl = process.env.BACKEND_URL;
 
 document.addEventListener('DOMContentLoaded', function() {
     const path = window.location.pathname;
@@ -29,7 +29,7 @@ async function loadExpressions() {
     const expressionNumber = localStorage.getItem('selectedQuantity');
 
     try {
-        const response = await axios.post(`http://localhost:5000/api/openai/expressions/${videoId}`, {
+        const response = await axios.post(`${backendUrl}/api/openai/expressions/${videoId}`, {
             captions,
             expressionLevel,
             expressionNumber

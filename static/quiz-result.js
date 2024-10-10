@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const questions = JSON.parse(localStorage.getItem('questions')) || [];
     const correctCount = parseInt(localStorage.getItem('correctCount')) || 0;

@@ -1,4 +1,4 @@
-// index.html에 대한 코드
+const backendUrl = process.env.BACKEND_URL;
 document.getElementById('next-button').addEventListener('click', async function() {
         //사용자에게 받은 url을 통해서 자막 가져오기
         const url = document.getElementById('youtube-url').value; // 유튜브 URL 가져오기
@@ -14,7 +14,7 @@ document.getElementById('next-button').addEventListener('click', async function(
                 console.log(videoId);
                 
                 // 서버로 연결해 자막 가져옴
-                const response = await axios.post(`http://localhost:5000/api/youtube/apicaptions/${videoId}`);
+                const response = await axios.post(`${backendUrl}/api/youtube/apicaptions/${videoId}`);
                 console.log("유튜브 입력받음");
                 console.log('받아온 유튜브 자막 정보 출력:', response.data); // 응답 로그
                 const captionsWithTime = response.data.captions.captionsWithTime;
