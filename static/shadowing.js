@@ -133,6 +133,16 @@ document.getElementById('ok-button').addEventListener('click', async () => {
     try {
         // 녹음 및 STT 종료
         mediaRecorder.stop();
+        if (speechRecognizer) {
+            speechRecognizer.stopContinuousRecognitionAsync(
+                () => {
+                    console.log('Speech recognition stopped successfully.');
+                },
+                (error) => {
+                    console.error('Error stopping speech recognition:', error);
+                }
+            );
+        }
         mediaRecorder.onstop = async () => {
             const audioBlob = new Blob(recordedChunks, { type: 'audio/webm' }); // 오디오 Blob 생성
 
