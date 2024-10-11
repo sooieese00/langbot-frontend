@@ -176,7 +176,7 @@ function handleQuizSubmit(userAnswer){
     const currentQuestion = questions[currentExpressionIndex];
    
     // 답안을 서버로 전송
-    fetch('http://localhost:5000/api/openai/feedback', {
+    fetch(`${backendUrl}/api/openai/feedback`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
