@@ -136,8 +136,7 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
 
     // 앞 2~4번째 단어와 뒤 2~4번째 단어만 선택
     const selectedWords = [
-        ...words.slice(1, Math.min(4, words.length)),  // 앞에서 2~4번째 단어
-        ...words.slice(-4, -1) // 뒤에서 2~4번째 단어
+        ...words.slice(1, Math.min(6, words.length))  // 앞에서 2~4번째 단어
     ];
 
     // 모든 단어를 처리하여 시간 목록을 구성
@@ -180,11 +179,12 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
 
     if (timeArray.length > 0) {
         const startTime = Math.min(...timeArray);
-        const maxStartTime = Math.max(...timeArray);
-        const maxStartTimeCaption = captionsWithTime.find(caption => caption.startTime === maxStartTime);
-        const endTime = maxStartTimeCaption ? maxStartTimeCaption.startTime + maxStartTimeCaption.duration : maxStartTime;
-        console.log(startTime, endTime);
-        return { startTime, endTime };
+        const endTime = startTime+10
+        //const maxStartTime = Math.max(...timeArray);
+        //const maxStartTimeCaption = captionsWithTime.find(caption => caption.startTime === maxStartTime);
+        //const endTime = maxStartTimeCaption ? maxStartTimeCaption.startTime + maxStartTimeCaption.duration : maxStartTime;
+        console.log(startTime);
+        return { startTime,  endTime };
     }
     return null;
 }
