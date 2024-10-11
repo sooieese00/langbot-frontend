@@ -18,7 +18,7 @@ jobs:
         uses: cloudtype-github-actions/deploy@v1
         with:
           token: ${{ secrets.CLOUDTYPE_TOKEN }}
-          project: sooieese/langbot-frontend
+          project: sooieese/langbot-backend
           stage: main
           yaml: |
             name: langbot-frontend
