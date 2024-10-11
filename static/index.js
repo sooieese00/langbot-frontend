@@ -1,4 +1,4 @@
-const backendUrl = process.env.BACKEND_URL;
+const backendUrl = window.backendUrl;
 document.getElementById('next-button').addEventListener('click', async function() {
     localStorage.clear();
     const url = document.getElementById('youtube-url').value.trim();

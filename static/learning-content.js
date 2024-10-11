@@ -2,7 +2,7 @@ let expressions = [];
 let currentExpressionIndex = 0;
 let player;
 const videoId = localStorage.getItem('videoId'); 
-const backendUrl = process.env.BACKEND_URL;
+const backendUrl = window.backendUrl;
 
 document.addEventListener('DOMContentLoaded', function() {
     const path = window.location.pathname;

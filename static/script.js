@@ -184,7 +184,7 @@ async function loadExpressions() {
     const expressionNumber = localStorage.getItem('selectedQuantity');
 
     try {
-        const response = await axios.post(`http://localhost:5000/api/openai/expressions/${videoId}`, {
+        const response = await axios.post(`${backendUrl}/api/openai/expressions/${videoId}`, {
             captions,
             expressionLevel,
             expressionNumber

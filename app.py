@@ -1,31 +1,40 @@
 import os
 from flask import Flask, request, jsonify, render_template
 import requests
-from dotenv import load_dotenv  
-load_dotenv()
-# Flask 애플리케이션 초기화
-app = Flask(__name__, static_folder="dist", template_folder="templates")
+from dotenv import load_dotenv
 
+load_dotenv()
+
+# Flask 애플리케이션 초기화
+app = Flask(__name__)
+
+# 환경 변수로부터 백엔드 URL 가져오기
+app.config['BACKEND_URL'] = os.getenv('BACKEND_URL')
+
+# 모든 템플릿에서 backend_url을 사용할 수 있도록 설정
+@app.context_processor
+def inject_backend_url():
+    return dict(backend_url=app.config['BACKEND_URL'])
 
 @app.route('/')
 def index():
-    return render_template('index.html')  
+    return render_template('index.html')
 
 @app.route('/learning-order')
 def learning_order():
-    return render_template('learning-order.html') 
+    return render_template('learning-order.html')
 
 @app.route('/learning-level')
 def learning_level():
-    return render_template('learning-level.html')  
+    return render_template('learning-level.html')
 
 @app.route('/learning-quantity')
 def learning_quantity():
-    return render_template('learning-quantity.html') 
+    return render_template('learning-quantity.html')
 
 @app.route('/learning-content')
 def learning_content():
-    return render_template('learning-content.html')  
+    return render_template('learning-content.html')
 
 @app.route('/quiz')
 def quiz():
@@ -55,18 +64,16 @@ def end_shadowing():
 def end_learning():
     return render_template('end-learning.html')
 
-app.config['BACKEND_URL'] = os.getenv('BACKEND_URL')
-
 # 백엔드 API와 연동
 @app.route('/api/forward', methods=['POST'])
 def forward_to_backend(): 
-    backend_url = app.config['BACKEND_URL'] 
+    backend_url = app.config['BACKEND_URL']
     data = request.json  # 요청 데이터 가져오기
     try:
         response = requests.post(f"{backend_url}/api/endpoint", json=data)  
         return jsonify(response.json()), response.status_code  
     except requests.exceptions.RequestException as e:
-        return jsonify({'error': str(e)}), 500 
+        return jsonify({'error': str(e)}), 500
 
 # Flask 애플리케이션 실행
 if __name__ == '__main__':

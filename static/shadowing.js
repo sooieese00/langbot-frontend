@@ -1,4 +1,4 @@
-const backendUrl = process.env.BACKEND_URL;
+const backendUrl = window.backendUrl;
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.container').style.display = "none";
     localStorage.removeItem('currentCaptionIndex');

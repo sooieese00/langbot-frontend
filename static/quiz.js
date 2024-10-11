@@ -1,4 +1,4 @@
-const backendUrl = process.env.BACKEND_URL;
+const backendUrl = window.backendUrl;
 document.addEventListener('DOMContentLoaded', (event) => {
     const currentUrl = window.location.pathname;
     if (currentUrl === '/quiz') {
