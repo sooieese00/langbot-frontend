@@ -4,7 +4,7 @@ import requests
 from dotenv import load_dotenv  
 load_dotenv()
 # Flask 애플리케이션 초기화
-app = Flask(__name__)
+app = Flask(__name__, static_folder="dist", template_folder="templates")
 
 
 @app.route('/')
@@ -57,17 +57,19 @@ def end_learning():
 
 app.config['BACKEND_URL'] = os.getenv('BACKEND_URL')
 
-# 백엔드 API와 연동하는 예제 엔드포인트
+# 백엔드 API와 연동
 @app.route('/api/forward', methods=['POST'])
 def forward_to_backend(): 
     backend_url = app.config['BACKEND_URL'] 
     data = request.json  # 요청 데이터 가져오기
     try:
-        response = requests.post(backend_url, json=data)
-        return jsonify(response.json()), response.status_code  # 백엔드 응답 반환
+        response = requests.post(f"{backend_url}/api/endpoint", json=data)  
+        return jsonify(response.json()), response.status_code  
     except requests.exceptions.RequestException as e:
-        return jsonify({'error': str(e)}), 500  # 요청 예외 발생 시 에러 반환
+        return jsonify({'error': str(e)}), 500 
 
 # Flask 애플리케이션 실행
 if __name__ == '__main__':
-    app.run(PORT=3000, debug=True)
+    # 환경 변수 PORT를 우선적으로 사용하고, 없으면 기본값으로 3000 사용
+    port = int(os.getenv('PORT', 3000))
+    app.run(host='0.0.0.0', port=port, debug=True)

@@ -13,7 +13,7 @@ async function loadFixedCaption() {
     const captions = expressionArray.map(expression => expression.originalSentence);
 
     try {
-        const response = await axios.post(`http://localhost:5000/api/openai/captions`, {
+        const response = await axios.post(`${backendUrl}/api/openai/captions`, {
             captions
         });
 
@@ -82,7 +82,7 @@ async function startSTTfirst() {
         console.log("시작");
         document.getElementById('user-stt').innerText = "";
         // 백엔드에서 subscriptionKey 가져오기
-        const response = await fetch('http://localhost:5000/api/azure/key');
+        const response = await fetch(`${backendUrl}/api/azure/key`);
         const { subscriptionKey: key } = await response.json();
         subscriptionKey = key;
 
@@ -144,7 +144,7 @@ document.getElementById('ok-button').addEventListener('click', async () => {
         
         console.log(formData);
         // 백엔드로 폼 데이터 전송
-        const response = await fetch('http://localhost:5000/api/azure/evaluation', {
+        const response = await fetch(`${backendUrl}/api/azure/evaluation`, {
             method: 'POST',
             body: formData,
         });
