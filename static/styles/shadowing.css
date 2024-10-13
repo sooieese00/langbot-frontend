@@ -57,6 +57,10 @@ p{
 #pronscore{
     font-weight: bold;
 }
+
+button{
+    background-color : #fafafa;
+}
 .caption {
     width: 60%; /* 너비 설정 */
     padding: 15px; /* 안쪽 여백 설정 */
@@ -71,7 +75,7 @@ p{
     background-color: #FAFAFA;
 }
 .user {
-    width: 60%; /* 너비 설정 */
+    width: 70%;
     padding: 15px; /* 안쪽 여백 설정 */
     margin-bottom : 30px;
     border-radius: 10px; /* 모서리 둥글게 설정 */
@@ -79,9 +83,22 @@ p{
     align-items: center; /* 수직 중앙 정렬 */
     justify-content: flex-start; /* 공간을 균등하게 나눔 */
     transition: all 0.3s ease; 
-    margin-left: 30%;
+    margin-left: 20%;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     background-color: #FAFAFA;
+}
+#user-stt{
+    min-width : 330px;
+    max-width:330px;
+}
+#ok-button{
+    width:50px;
+    border:none;
+    border-radius: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #42c62f;
+    color: white;
 }
 .icon {
     margin-right: 10px;
