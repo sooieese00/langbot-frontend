@@ -161,10 +161,10 @@ document.getElementById('ok-button').addEventListener('click', async () => {
 
         const result = await response.json();
         console.log("Evaluation result:", result);
-        document.getElementById('accuracyscore').innerText = `-정확도: ${result.AccuracyScore/4} /25점`;
-        document.getElementById('fluencyscore').innerText = `-유창성: ${result.FluencyScore/4} /25점`;
-        document.getElementById('completenesscore').innerText = `-텍스트와의 유사도: ${result.CompletenessScore/4} /25점`;
-        document.getElementById('pronscore').innerText = `-종합 점수: ${result.PronScore} /100점`;
+        document.getElementById('accuracyscore').innerText = `✔️정확도: ${result.AccuracyScore/4} /25점`;
+        document.getElementById('fluencyscore').innerText = `🎤유창성: ${result.FluencyScore/4} /25점`;
+        document.getElementById('completenesscore').innerText = `📝텍스트와 유사도: ${result.CompletenessScore/4} /25점`;
+        document.getElementById('pronscore').innerText = `-🏆종합 점수: ${result.PronScore} /100점`;
 
     };
     } catch (error) {
