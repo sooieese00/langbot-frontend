@@ -129,8 +129,64 @@ async function startSTTfirst() {
     }
 }
 
+async function convertWebMtoWAV(audioBlob) {
+    // Web Audio API를 사용하여 WebM 파일을 디코딩
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const arrayBuffer = await audioBlob.arrayBuffer();
+    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+
+    // WAV 파일 헤더 생성
+    function encodeWAV(audioBuffer) {
+        const numOfChannels = audioBuffer.numberOfChannels;
+        const sampleRate = audioBuffer.sampleRate;
+        const format = 1; // PCM
+        const bitDepth = 16; // 16비트
+
+        const numOfSamples = audioBuffer.length * numOfChannels;
+        const buffer = new ArrayBuffer(44 + numOfSamples * 2);
+        const view = new DataView(buffer);
+
+        // RIFF 헤더
+        view.setUint32(0, 1380533830, false); // 'RIFF'
+        view.setUint32(4, 36 + numOfSamples * 2, true); // 전체 크기
+        view.setUint32(8, 1463899717, false); // 'WAVE'
+
+        // fmt 서브체크
+        view.setUint32(12, 1718449184, false); // 'fmt '
+        view.setUint32(16, 16, true); // fmt 서브체크 크기
+        view.setUint16(20, format, true); // 오디오 포맷 (PCM)
+        view.setUint16(22, numOfChannels, true); // 채널 수
+        view.setUint32(24, sampleRate, true); // 샘플레이트
+        view.setUint32(28, sampleRate * numOfChannels * bitDepth / 8, true); // 초당 바이트 수
+        view.setUint16(32, numOfChannels * bitDepth / 8, true); // 블록 정렬
+        view.setUint16(34, bitDepth, true); // 비트 깊이
+
+        // data 서브체크
+        view.setUint32(36, 1684108385, false); // 'data'
+        view.setUint32(40, numOfSamples * 2, true); // 데이터 크기
+
+        // PCM 데이터
+        let offset = 44;
+        for (let i = 0; i < audioBuffer.length; i++) {
+            for (let channel = 0; channel < numOfChannels; channel++) {
+                let sample = Math.max(-1, Math.min(1, audioBuffer.getChannelData(channel)[i]));
+                sample = sample < 0 ? sample * 32768 : sample * 32767; // 16비트 샘플
+                view.setInt16(offset, sample, true);
+                offset += 2;
+            }
+        }
+
+        return new Blob([view], { type: 'audio/wav' });
+    }
+
+    // WAV 파일로 인코딩
+    const wavBlob = encodeWAV(audioBuffer);
+    return wavBlob;
+}
+
 document.getElementById('ok-button').addEventListener('click', async () => {
     try {
+        // 녹음 및 STT 종료
         // 녹음 및 STT 종료
         mediaRecorder.stop();
         if (speechRecognizer) {
@@ -144,15 +200,16 @@ document.getElementById('ok-button').addEventListener('click', async () => {
             );
         }
         mediaRecorder.onstop = async () => {
-            const audioBlob = new Blob(recordedChunks, { type: 'audio/webm' }); // 오디오 Blob 생성
+            const audioBlob = new Blob(recordedChunks, { type: 'audio/webm' });// 오디오 Blob 생성
+            // WebM을 WAV로 변환
+            const wavBlob = await convertWebMtoWAV(audioBlob);
 
-        // FormData에 오디오 파일과 참조 텍스트 추가
-        const formData = new FormData();
-        formData.append('audioFile', audioBlob, 'audio.webm'); // 파일을 FormData로 추가
-        formData.append('referenceText', document.getElementById('caption-text').innerText); // 참조 텍스트 추가
-        formData.append('region', 'southeastasia'); // Azure Speech API의 region 값
-        
-        console.log(formData);
+            // FormData에 변환된 WAV 파일 추가
+            const formData = new FormData();
+            formData.append('audioFile', wavBlob, 'audio.wav'); // 변환된 WAV 파일 추가
+            formData.append('referenceText', document.getElementById('caption-text').innerText); // 참조 텍스트 추가
+            formData.append('region', 'southeastasia'); // Azure Speech API의 region 값
+
         // 백엔드로 폼 데이터 전송
         const response = await fetch(`${backendUrl}/api/azure/evaluation`, {
             method: 'POST',
