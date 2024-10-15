@@ -182,7 +182,7 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
         const startTime = Math.min(...timeArray);
         const maxStartTime = Math.max(...timeArray);
         const maxStartTimeCaption = captionsWithTime.find(caption => caption.startTime === maxStartTime);
-        const endTime = maxStartTimeCaption ? maxStartTimeCaption.startTime + maxStartTimeCaption.duration : maxStartTime;
+        let endTime = maxStartTimeCaption ? maxStartTimeCaption.startTime + maxStartTimeCaption.duration : maxStartTime;
         console.log(startTime,  endTime);
         // endTime과 startTime 차이가 15초를 넘으면 endTime을 조정
         if (endTime - startTime > 15) {
