@@ -136,7 +136,7 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
 
     // 앞 2~4번째 단어와 뒤 2~4번째 단어만 선택
     const selectedWords = [
-        ...words.slice(1, Math.min(6, words.length))  // 앞에서 2~4번째 단어
+        ...words.slice(2, Math.min(5, words.length))  // 앞에서 2~4번째 단어
     ];
 
     // 모든 단어를 처리하여 시간 목록을 구성
