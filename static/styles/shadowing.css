@@ -34,7 +34,7 @@ body {
 }
 
 .sidebar {
-    width: 12vw; /* 사이드바 폭 */
+    width: 13vw; /* 사이드바 폭 */
     background-color: #FAFAFA; /* 배경 색상 */
     position: fixed;/* 화면에 고정 */
     top: 50%; /* 상단을 화면의 중앙으로 설정 */
