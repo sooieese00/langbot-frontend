@@ -135,7 +135,7 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
     const wordObjects = {};
 
     const selectedWords = [
-        ...words.slice(0, Math.min(4, words.length)),
+        ...words.slice(1, Math.min(4, words.length)),
     ];
     
     // 모든 단어를 처리하여 시간 목록을 구성
@@ -182,10 +182,13 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
         while (timeArray.length > 1 && timeArray[1] - timeArray[0] > 8) {
             timeArray.shift();
         }
-        for (let i = 0; i < timeArray.length - 1; i++) {
-                    while (timeArray.length > 3 && timeArray[i + 1] - timeArray[i] > 8) {
-                        // 뒤에 있는 값을 제거
-                        timeArray.splice(i + 1, 1);
+
+        if (timeArray.length > 4) {
+            for (let i = 2; i < timeArray.length - 2; i++) {
+                while (timeArray.length > 4 && i + 1 < timeArray.length && timeArray[i + 1] - timeArray[i] > 8) {
+                    // 뒤에 있는 값을 제거
+                    timeArray.splice(i + 1, 1);
+                }
             }
         }
         // 마지막 값과 두 번째 마지막 값의 차이가 20 이상일 때 계속 마지막 값을 제거
