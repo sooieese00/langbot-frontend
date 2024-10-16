@@ -186,12 +186,17 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
         if(timeArray.length > 1 && timeArray[timeArray.length-1]- timeArray[timeArray.length-2]>20){
             timeArray.pop();
         }
-
+        if(timeArray.length > 1 && timeArray[timeArray.length-1]- timeArray[timeArray.length-2]>20){
+            timeArray.pop();
+        }
+        if(timeArray.length > 1 && timeArray[timeArray.length-1]- timeArray[timeArray.length-2]>20){
+            timeArray.pop();
+        }
         let startTime = Math.min(...timeArray);
         startTime = Math.max(startTime, 0); 
 
         // 종료 시간 설정
-        const endTime = Math.max(...timeArray)+5;
+        const endTime = Math.max(...timeArray)+6;
         
         console.log(startTime, endTime);
         return { startTime, endTime };
