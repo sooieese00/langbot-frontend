@@ -191,7 +191,7 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
         startTime = Math.max(startTime, 0); 
 
         // 종료 시간 설정
-        const endTime = Math.max(...timeArray)+2;
+        const endTime = Math.max(...timeArray)+5;
         
         console.log(startTime, endTime);
         return { startTime, endTime };
