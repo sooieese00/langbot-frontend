@@ -114,24 +114,14 @@ function initYouTubePlayer(videoId) {
         }
     });
 }
-let pauseTimeout = null;
 
 function playVideoAtTimeRange(startTime, endTime) {
     console.log("playVideoAtTimeRange 함수 시작");
-    
-    if (pauseTimeout) {
-        clearTimeout(pauseTimeout); // 기존의 타이머가 있으면 취소
-        pauseTimeout = null;
-    }
-    
     if (player && player.seekTo) {
         player.seekTo(startTime);
         player.playVideo();
-        
-        // 새로운 타이머를 설정하고 그 참조를 pauseTimeout에 저장
-        pauseTimeout = setTimeout(() => {
+        setTimeout(() => {
             player.pauseVideo();
-            pauseTimeout = null; // 타이머가 완료되면 변수 초기화
         }, (endTime - startTime) * 1000);
     } else {
         console.error("playVideoAtTimeRange 에러: 플레이어가 초기화되지 않았습니다.");
