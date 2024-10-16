@@ -185,7 +185,7 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
         }
         
         // 마지막 값과 두 번째 마지막 값의 차이가 20 이상일 때 계속 마지막 값을 제거
-        while (timeArray.length > 1 && timeArray[timeArray.length - 1] - timeArray[timeArray.length - 2] >8.9) {
+        while (timeArray.length > 1 && timeArray[timeArray.length - 1] - timeArray[timeArray.length - 2] >8) {
             timeArray.pop();
         }
 
@@ -193,7 +193,7 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
         startTime = Math.max(startTime, 0); // 음수 방지
 
         const endTime = timeArray[timeArray.length - 1] + 6; // 마지막 값에 6초 추가
-        
+        console.log(timeArray);
         console.log(startTime, endTime);
         return { startTime, endTime };
     }
