@@ -63,7 +63,7 @@ function displayExpression(expression) {
     document.getElementById('new-example-translation').textContent = expression.newExampleTranslation || '';
 
     const captionsWithTime = JSON.parse(localStorage.getItem('captionsWithTime'));
-    const { startTime, endTime } = findExpressionTimeRange(captionsWithTime, expression.title);
+    const { startTime, endTime } = findExpressionTimeRange(captionsWithTime, expression.originalSentence);
     playVideoAtTimeRange(startTime, endTime);
 }
 
@@ -79,7 +79,7 @@ function populateExpressionList() {
             listItem.addEventListener('click', () => {
                 currentExpressionIndex = index;
                 displayExpression(expression);
-                const { startTime, endTime } = findExpressionTimeRange(captionsWithTime, expression.title);
+                const { startTime, endTime } = findExpressionTimeRange(captionsWithTime, expression.originalSentence);
                 playVideoAtTimeRange(startTime, endTime);
             });
             expressionList.appendChild(listItem);
