@@ -183,14 +183,6 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
             timeArray.shift();
         }
 
-        if (timeArray.length > 4) {
-            for (let i = 2; i < timeArray.length - 2; i++) {
-                while (timeArray.length > 4 && i + 1 < timeArray.length && timeArray[i + 1] - timeArray[i] > 8) {
-                    // 뒤에 있는 값을 제거
-                    timeArray.splice(i + 1, 1);
-                }
-            }
-        }
         // 마지막 값과 두 번째 마지막 값의 차이가 20 이상일 때 계속 마지막 값을 제거
         while (timeArray.length > 1 && timeArray[timeArray.length - 1] - timeArray[timeArray.length - 2] >8) {
             timeArray.pop();
