@@ -79,7 +79,7 @@ function populateExpressionList() {
             listItem.addEventListener('click', () => {
                 currentExpressionIndex = index;
                 displayExpression(expression);
-                const { startTime, endTime } = findExpressionTimeRange(captionsWithTime, expression.originalSentence);
+                const { startTime, endTime } = findExpressionTimeRange(captionsWithTime, expression.title);
                 playVideoAtTimeRange(startTime, endTime);
             });
             expressionList.appendChild(listItem);
@@ -136,8 +136,7 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
 
     // 앞 2~4번째 단어와 뒤 2~4번째 단어만 선택
     const selectedWords = [
-        ...words.slice(2, Math.min(5, words.length)),
-        ...words.slice(-5, -2) 
+        ...words.slice(0, Math.min(3, words.length)),
     ];
     
     // 모든 단어를 처리하여 시간 목록을 구성
@@ -179,17 +178,19 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
     }
 
     if (timeArray.length > 0) {
-        const startTime = Math.min(...timeArray);
-        const maxStartTime = Math.max(...timeArray);
-        const maxStartTimeCaption = captionsWithTime.find(caption => caption.startTime === maxStartTime);
-        let endTime = maxStartTimeCaption ? maxStartTimeCaption.startTime + maxStartTimeCaption.duration : maxStartTime;
-        console.log(startTime,  endTime);
-        // endTime과 startTime 차이가 15초를 넘으면 endTime을 조정
-        if (endTime - startTime > 15) {
-            endTime = startTime + 15;
-        }
+        const firstTime = Math.min(...timeArray);
+        const midTime = timeArray[Math.floor(timeArray.length / 2)];
+        
+        // 시작 시간 설정
+        let startTime = (midTime - firstTime > 10) ? midTime - 7 : firstTime - 5;
+        startTime = Math.max(startTime, 0); // startTime이 0 이하로 내려가지 않도록 설정
+
+        // 종료 시간 설정
+        const lastTime = Math.max(...timeArray);
+        let endTime = (lastTime - midTime > 10) ? midTime + 7 : lastTime + 5;
+        
         console.log(startTime, endTime);
-        return { startTime,  endTime };
+        return { startTime, endTime };
     }
     return null;
 }
