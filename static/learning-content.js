@@ -180,7 +180,7 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
     if (timeArray.length > 0) {
         timeArray.sort((a, b) => a - b);
         
-        while (timeArray.length > 1 && timeArray[1] - timeArray[0] > 8.9) {
+        while (timeArray.length > 1 && timeArray[1] - timeArray[0] > 8) {
             timeArray.shift();
         }
         
