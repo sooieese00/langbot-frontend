@@ -185,11 +185,12 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
         if(timeArray.length > 1 && timeArray[timeArray.length-1]- timeArray[timeArray.length-2]>10){
             timeArray.pop();
         }
-        const startTime = Math.min(...timeArray);
+        let startTime = Math.min(...timeArray);
+        startTime = Math.max(startTime-3, 0); 
 
         // 종료 시간 설정
         let lastTime = Math.max(...timeArray);
-        const endTime = lastTime-firstTime>15 ? startTime+15 : endTime;
+        const endTime = lastTime-startTime>10 ? startTime+12 : endTime+3;
         
         console.log(startTime, endTime);
         return { startTime, endTime };
