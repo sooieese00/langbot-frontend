@@ -184,7 +184,7 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
             timeArray.shift();
         }
         for (let i = 0; i < timeArray.length - 1; i++) {
-            while (timeArray.length > 4 && timeArray[i + 1] - timeArray[i] > 15) {
+            while (timeArray.length > 3 && timeArray[i + 1] - timeArray[i] > 9) {
                 // 뒤에 있는 값을 제거
                 timeArray.splice(i + 1, 1);
             }
@@ -202,7 +202,9 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
         console.log(startTime, endTime);
         return { startTime, endTime };
     }
-    return null;
+    startTime = 0;
+    endTime = 0;
+    return {startTime, endTime};
 }
   
 function goNext() {
