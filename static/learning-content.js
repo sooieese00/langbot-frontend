@@ -152,8 +152,8 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
             if (captionsWithTime[j].text.includes(lowerCaseWord)) {
                 wordObjects[`word${index}`].startTimes.push(captionsWithTime[j].startTime);
             }
-        }
-    });
+        }});
+
     console.log("선택된 단어들 출력", wordObjects);
 
     // 단어 쌍을 비교하여 조건에 맞지 않는 시간들을 제거
@@ -183,8 +183,8 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
         if(timeArray.length > 1 && timeArray[1]-timeArray[0]>20){
             timeArray.shift();
         }
-        if(timeArray.length > 1 && timeArray[timeArray.length-1]- timeArray[timeArray.length-2]>20){
-            timeArray.pop();
+        if(timeArray.length > 1 && timeArray[1]-timeArray[0]>20){
+            timeArray.shift();
         }
         if(timeArray.length > 1 && timeArray[timeArray.length-1]- timeArray[timeArray.length-2]>20){
             timeArray.pop();
@@ -192,11 +192,11 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
         if(timeArray.length > 1 && timeArray[timeArray.length-1]- timeArray[timeArray.length-2]>20){
             timeArray.pop();
         }
-        let startTime = Math.min(...timeArray);
-        startTime = Math.max(startTime, 0); 
 
-        // 종료 시간 설정
-        const endTime = Math.max(...timeArray)+6;
+        let startTime = timeArray[0]; // 첫 번째 값 (이미 정렬된 상태)
+        startTime = Math.max(startTime, 0); // 음수 방지
+
+        const endTime = timeArray[timeArray.length - 1] + 6; // 마지막 값에 6초 추가
         
         console.log(startTime, endTime);
         return { startTime, endTime };
