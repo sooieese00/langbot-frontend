@@ -63,7 +63,7 @@ function displayExpression(expression) {
     document.getElementById('new-example-translation').textContent = expression.newExampleTranslation || '';
 
     const captionsWithTime = JSON.parse(localStorage.getItem('captionsWithTime'));
-    const { startTime, endTime } = findExpressionTimeRange(captionsWithTime, expression.originalSentence);
+    const { startTime, endTime } = findExpressionTimeRange(captionsWithTime, expression.title);
     playVideoAtTimeRange(startTime, endTime);
 }
 
