@@ -180,12 +180,12 @@ function findExpressionTimeRange(captionsWithTime, originalSentence) {
     if (timeArray.length > 0) {
         timeArray.sort((a, b) => a - b);
         
-        while (timeArray.length > 1 && timeArray[1] - timeArray[0] > 10) {
+        while (timeArray.length > 1 && timeArray[1] - timeArray[0] > 8.9) {
             timeArray.shift();
         }
         
         // 마지막 값과 두 번째 마지막 값의 차이가 20 이상일 때 계속 마지막 값을 제거
-        while (timeArray.length > 1 && timeArray[timeArray.length - 1] - timeArray[timeArray.length - 2] >10) {
+        while (timeArray.length > 1 && timeArray[timeArray.length - 1] - timeArray[timeArray.length - 2] >8.9) {
             timeArray.pop();
         }
 
