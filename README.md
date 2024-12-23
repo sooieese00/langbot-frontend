@@ -37,7 +37,7 @@ LangBot은 원하는 **유튜브 영상**으로 영어 `표현 학습`, `퀴즈`
    - 학습할 표현 **개수**와 **난이도**(걸음마, 초급, 중급, 고급)를 설정합니다
      
 ![personalize](./static/assets/personalize-page.png)
-![personalize](./static/assets/personalize.mp4)
+![personalize](./static/assets/personalize.gif)
 
 <br>
 
@@ -47,7 +47,7 @@ LangBot은 원하는 **유튜브 영상**으로 영어 `표현 학습`, `퀴즈`
    - 학습 표현이 해당된 유튜브 영상 구간이 자동으로 재생됩니다
      
  ![study](./static/assets/study-page.png)
-![study](./static/assets/study.mp4)
+![study](./static/assets/study.gif)
 
 <br>
 
@@ -57,7 +57,7 @@ LangBot은 원하는 **유튜브 영상**으로 영어 `표현 학습`, `퀴즈`
    - 퀴즈가 끝난 이후에 직관적인 결과 화면을 통해 점수와 문제를 확인할 수 있습니다
      
 ![quiz](./static/assets/quiz-page.png)
-![quiz](./static/assets/quiz.mp4)
+![quiz](./static/assets/quiz.gif)
 
 <br>
 
@@ -68,7 +68,7 @@ LangBot은 원하는 **유튜브 영상**으로 영어 `표현 학습`, `퀴즈`
    - 따라 말하는 것이 끝나면 점수로 **발음에 대한 평가**를 받습니다 (정확도, 유창성, 텍스트와의 유사도, 종합점수)
      
 ![shadowing](./static/assets/shadowing-page.png)
-![shadowing](./static/assets/shadowing-page.png)
+![shadowing](./static/assets/shadowing.gif)
 
 <br>
 
